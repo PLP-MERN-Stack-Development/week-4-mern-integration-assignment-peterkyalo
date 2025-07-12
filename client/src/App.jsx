@@ -14,6 +14,8 @@ import { authService } from './services/api';
 const PostsContext = createContext();
 export const usePosts = () => useContext(PostsContext);
 
+// Tailwind Test Component
+
 const PostListPage = () => {
   const { posts, loading, error, fetchPosts, deletePostOptimistic } = usePosts();
   const [deleteError, setDeleteError] = useState(null);
