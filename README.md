@@ -33,6 +33,7 @@ mern-blog/
 │   ├── routes/             # API routes
 │   ├── middleware/         # Custom middleware
 │   ├── utils/              # Utility functions
+│   ├── uploads/            # Uploaded images
 │   ├── server.js           # Main server file
 │   └── package.json        # Server dependencies
 └── README.md               # Project documentation
@@ -45,30 +46,55 @@ mern-blog/
 3. Follow the setup instructions in the `Week4-Assignment.md` file
 4. Complete the tasks outlined in the assignment
 
-## Files Included
+## Setup Instructions
 
-- `Week4-Assignment.md`: Detailed assignment instructions
-- Starter code for both client and server:
-  - Basic project structure
-  - Configuration files
-  - Sample models and components
+### Server
+```bash
+cd server
+cp .env.example .env # Edit with your MongoDB URI and JWT secret
+npm install
+npm run dev
+```
 
-## Requirements
+### Client
+```bash
+cd client
+cp .env.example .env # Edit if needed
+npm install
+npm run dev
+```
 
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- npm or yarn
-- Git
+## API Documentation
 
-## Submission
+### Posts
+- `GET /api/posts` — List posts (supports `?page`, `?limit`, `?q` for search)
+- `GET /api/posts/:id` — Get single post
+- `POST /api/posts` — Create post (auth required)
+- `PUT /api/posts/:id` — Update post (auth required)
+- `DELETE /api/posts/:id` — Delete post (auth required)
+- `POST /api/posts/upload-image` — Upload image (auth required)
+- `POST /api/posts/:id/comments` — Add comment (auth required)
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+### Categories
+- `GET /api/categories` — List categories
+- `POST /api/categories` — Create category (auth required)
 
-1. Complete both the client and server portions of the application
-2. Implement all required API endpoints
-3. Create the necessary React components and hooks
-4. Document your API and setup process in the README.md
-5. Include screenshots of your working application
+### Auth
+- `POST /api/auth/register` — Register
+- `POST /api/auth/login` — Login
+
+## Features Implemented
+- User registration and login (JWT authentication)
+- Protected routes for creating/editing/deleting posts
+- Image upload for blog posts
+- Pagination and search for posts
+- Comments on posts
+- Form validation and error handling
+- Responsive UI with Tailwind CSS
+
+## Screenshots
+
+> Add screenshots of your application here (main views, features, etc.)
 
 ## Resources
 
@@ -76,4 +102,4 @@ Your work will be automatically submitted when you push to your GitHub Classroom
 - [Express.js Documentation](https://expressjs.com/)
 - [React Documentation](https://react.dev/)
 - [Node.js Documentation](https://nodejs.org/en/docs/)
-- [Mongoose Documentation](https://mongoosejs.com/docs/) 
+- [Mongoose Documentation](https://mongoosejs.com/docs/)

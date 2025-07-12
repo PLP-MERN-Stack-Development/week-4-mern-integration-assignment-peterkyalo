@@ -75,8 +75,10 @@ export const postService = {
   },
 
   // Add a comment to a post
-  addComment: async (postId, commentData) => {
-    const response = await api.post(`/posts/${postId}/comments`, commentData);
+  addComment: async (postId, commentData, token) => {
+    const response = await api.post(`/posts/${postId}/comments`, commentData, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    });
     return response.data;
   },
 
@@ -133,4 +135,4 @@ export const authService = {
   },
 };
 
-export default api; 
+export default api;
